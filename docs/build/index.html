@@ -1,0 +1,560 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Documentation for Koopman! &#8212; Koopman Operator Analysis with Deep Learning  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="documentation-for-koopman">
+<h1>Documentation for Koopman!<a class="headerlink" href="#documentation-for-koopman" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="koopmanlib-package">
+<h1>koopmanlib package<a class="headerlink" href="#koopmanlib-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-koopmanlib.dictionary">
+<span id="koopmanlib-dictionary-module"></span><h2>koopmanlib.dictionary module<a class="headerlink" href="#module-koopmanlib.dictionary" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="koopmanlib.dictionary.AbstractDictionary">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">koopmanlib.dictionary.</span></span><span class="sig-name descname"><span class="pre">AbstractDictionary</span></span><a class="reference internal" href="_modules/koopmanlib/dictionary.html#AbstractDictionary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.dictionary.AbstractDictionary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.dictionary.AbstractDictionary.generate_B">
+<span class="sig-name descname"><span class="pre">generate_B</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/dictionary.html#AbstractDictionary.generate_B"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.dictionary.AbstractDictionary.generate_B" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="koopmanlib.dictionary.DicNN">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">koopmanlib.dictionary.</span></span><span class="sig-name descname"><span class="pre">DicNN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/dictionary.html#DicNN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.dictionary.DicNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Trainable dictionaries</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.dictionary.DicNN.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/dictionary.html#DicNN.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.dictionary.DicNN.call" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is where the layer’s logic lives.</p>
+<p>The <cite>call()</cite> method may not create state (except in its first invocation,
+wrapping the creation of variables or other resources in <cite>tf.init_scope()</cite>).
+It is recommended to create state in <cite>__init__()</cite>, or the <cite>build()</cite> method
+that is called automatically before <cite>call()</cite> executes the first time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputs</strong> – <p>Input tensor, or dict/list/tuple of input tensors.
+The first positional <cite>inputs</cite> argument is subject to special rules:
+- <cite>inputs</cite> must be explicitly passed. A layer cannot have zero</p>
+<blockquote>
+<div><p>arguments, and <cite>inputs</cite> cannot be provided via the default value
+of a keyword argument.</p>
+</div></blockquote>
+<ul>
+<li><p>NumPy array or Python scalar values in <cite>inputs</cite> get cast as tensors.</p></li>
+<li><p>Keras mask metadata is only collected from <cite>inputs</cite>.</p></li>
+<li><p>Layers are built (<cite>build(input_shape)</cite> method)
+using shape info from <cite>inputs</cite> only.</p></li>
+<li><p><cite>input_spec</cite> compatibility is only checked against <cite>inputs</cite>.</p></li>
+<li><p>Mixed precision input casting is only applied to <cite>inputs</cite>.
+If a layer has tensor arguments in <cite>*args</cite> or <cite>**kwargs</cite>, their
+casting behavior in mixed precision should be handled manually.</p></li>
+<li><p>The SavedModel input specification is generated using <cite>inputs</cite> only.</p></li>
+<li><p>Integration with various ecosystem packages like TFMOT, TFLite,
+TF.js, etc is only supported for <cite>inputs</cite> and not for tensors in
+positional and keyword arguments.</p></li>
+</ul>
+</p></li>
+<li><p><strong>*args</strong> – Additional positional arguments. May contain tensors, although
+this is not recommended, for the reasons above.</p></li>
+<li><p><strong>**kwargs</strong> – <p>Additional keyword arguments. May contain tensors, although
+this is not recommended, for the reasons above.
+The following optional keyword arguments are reserved:
+- <cite>training</cite>: Boolean scalar tensor of Python boolean indicating</p>
+<blockquote>
+<div><p>whether the <cite>call</cite> is meant for training or inference.</p>
+</div></blockquote>
+<ul>
+<li><p><cite>mask</cite>: Boolean input mask. If the layer’s <cite>call()</cite> method takes a
+<cite>mask</cite> argument, its default value will be set to the mask generated
+for <cite>inputs</cite> by the previous layer (if <cite>input</cite> did come from a layer
+that generated a corresponding mask, i.e. if it came from a Keras
+layer with masking support).</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tensor or list/tuple of tensors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.dictionary.DicNN.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/dictionary.html#DicNN.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.dictionary.DicNN.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of dict
+every time it is called. The callers should make a copy of the returned dict
+if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="koopmanlib.dictionary.DicRBF">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">koopmanlib.dictionary.</span></span><span class="sig-name descname"><span class="pre">DicRBF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rbf_number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regularizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/dictionary.html#DicRBF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.dictionary.DicRBF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#koopmanlib.dictionary.AbstractDictionary" title="koopmanlib.dictionary.AbstractDictionary"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractDictionary</span></code></a></p>
+<p>RBF based on notations in
+(<a class="reference external" href="https://en.wikipedia.org/wiki/Radial_basis_function">https://en.wikipedia.org/wiki/Radial_basis_function</a>)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.dictionary.DicRBF.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/dictionary.html#DicRBF.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.dictionary.DicRBF.build" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.dictionary.DicRBF.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/dictionary.html#DicRBF.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.dictionary.DicRBF.call" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="koopmanlib.dictionary.PsiNN">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">koopmanlib.dictionary.</span></span><span class="sig-name descname"><span class="pre">PsiNN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/dictionary.html#PsiNN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.dictionary.PsiNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code>, <a class="reference internal" href="#koopmanlib.dictionary.AbstractDictionary" title="koopmanlib.dictionary.AbstractDictionary"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractDictionary</span></code></a></p>
+<p>Concatenate constant, data and trainable dictionaries together as [1, data, DicNN]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.dictionary.PsiNN.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/dictionary.html#PsiNN.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.dictionary.PsiNN.call" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is where the layer’s logic lives.</p>
+<p>The <cite>call()</cite> method may not create state (except in its first invocation,
+wrapping the creation of variables or other resources in <cite>tf.init_scope()</cite>).
+It is recommended to create state in <cite>__init__()</cite>, or the <cite>build()</cite> method
+that is called automatically before <cite>call()</cite> executes the first time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputs</strong> – <p>Input tensor, or dict/list/tuple of input tensors.
+The first positional <cite>inputs</cite> argument is subject to special rules:
+- <cite>inputs</cite> must be explicitly passed. A layer cannot have zero</p>
+<blockquote>
+<div><p>arguments, and <cite>inputs</cite> cannot be provided via the default value
+of a keyword argument.</p>
+</div></blockquote>
+<ul>
+<li><p>NumPy array or Python scalar values in <cite>inputs</cite> get cast as tensors.</p></li>
+<li><p>Keras mask metadata is only collected from <cite>inputs</cite>.</p></li>
+<li><p>Layers are built (<cite>build(input_shape)</cite> method)
+using shape info from <cite>inputs</cite> only.</p></li>
+<li><p><cite>input_spec</cite> compatibility is only checked against <cite>inputs</cite>.</p></li>
+<li><p>Mixed precision input casting is only applied to <cite>inputs</cite>.
+If a layer has tensor arguments in <cite>*args</cite> or <cite>**kwargs</cite>, their
+casting behavior in mixed precision should be handled manually.</p></li>
+<li><p>The SavedModel input specification is generated using <cite>inputs</cite> only.</p></li>
+<li><p>Integration with various ecosystem packages like TFMOT, TFLite,
+TF.js, etc is only supported for <cite>inputs</cite> and not for tensors in
+positional and keyword arguments.</p></li>
+</ul>
+</p></li>
+<li><p><strong>*args</strong> – Additional positional arguments. May contain tensors, although
+this is not recommended, for the reasons above.</p></li>
+<li><p><strong>**kwargs</strong> – <p>Additional keyword arguments. May contain tensors, although
+this is not recommended, for the reasons above.
+The following optional keyword arguments are reserved:
+- <cite>training</cite>: Boolean scalar tensor of Python boolean indicating</p>
+<blockquote>
+<div><p>whether the <cite>call</cite> is meant for training or inference.</p>
+</div></blockquote>
+<ul>
+<li><p><cite>mask</cite>: Boolean input mask. If the layer’s <cite>call()</cite> method takes a
+<cite>mask</cite> argument, its default value will be set to the mask generated
+for <cite>inputs</cite> by the previous layer (if <cite>input</cite> did come from a layer
+that generated a corresponding mask, i.e. if it came from a Keras
+layer with masking support).</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tensor or list/tuple of tensors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.dictionary.PsiNN.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/dictionary.html#PsiNN.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.dictionary.PsiNN.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of dict
+every time it is called. The callers should make a copy of the returned dict
+if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-koopmanlib.solver">
+<span id="koopmanlib-solver-module"></span><h2>koopmanlib.solver module<a class="headerlink" href="#module-koopmanlib.solver" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="koopmanlib.solver.KoopmanDLSolver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">koopmanlib.solver.</span></span><span class="sig-name descname"><span class="pre">KoopmanDLSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/solver.html#KoopmanDLSolver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.solver.KoopmanDLSolver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#koopmanlib.solver.KoopmanGeneralSolver" title="koopmanlib.solver.KoopmanGeneralSolver"><code class="xref py py-class docutils literal notranslate"><span class="pre">KoopmanGeneralSolver</span></code></a></p>
+<p>Build the Koopman model with dictionary learning</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.solver.KoopmanDLSolver.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_valid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_interval</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr_decay_factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/solver.html#KoopmanDLSolver.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.solver.KoopmanDLSolver.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train Koopman model and calculate the final information,
+such as eigenfunctions, eigenvalues and K.
+For each outer training epoch, the koopman dictionary is trained
+by several times (inner training epochs), and then compute matrix K.
+Iterate the outer training.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_train</strong> (<em>[</em><em>data at the current time</em><em>, </em><em>data at the next time</em><em>]</em>) – training data</p></li>
+<li><p><strong>data_valid</strong> (<em>[</em><em>data at the current time</em><em>, </em><em>data at the next time</em><em>]</em>) – validation data</p></li>
+<li><p><strong>epochs</strong> (<em>int</em>) – the number of the outer epochs</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em>) – batch size</p></li>
+<li><p><strong>lr</strong> (<em>float</em>) – learning rate</p></li>
+<li><p><strong>log_interval</strong> (<em>int</em>) – the patience of learning decay</p></li>
+<li><p><strong>lr_decay_factor</strong> (<em>float</em>) – the ratio of learning decay</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.solver.KoopmanDLSolver.build_model">
+<span class="sig-name descname"><span class="pre">build_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/solver.html#KoopmanDLSolver.build_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.solver.KoopmanDLSolver.build_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build model with trainable dictionary</p>
+<p>The loss function is ||Psi(y) - K Psi(x)||^2 .</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.solver.KoopmanDLSolver.train_psi">
+<span class="sig-name descname"><span class="pre">train_psi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/solver.html#KoopmanDLSolver.train_psi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.solver.KoopmanDLSolver.train_psi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train the trainable part of the dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>model</em>) – koopman model</p></li>
+<li><p><strong>epochs</strong> (<em>int</em>) – the number of training epochs before computing K for each inner training epoch</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>history</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>history callback object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="koopmanlib.solver.KoopmanGeneralSolver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">koopmanlib.solver.</span></span><span class="sig-name descname"><span class="pre">KoopmanGeneralSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/solver.html#KoopmanGeneralSolver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.solver.KoopmanGeneralSolver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Build the Koopman solver</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.solver.KoopmanGeneralSolver.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_train</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/solver.html#KoopmanGeneralSolver.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.solver.KoopmanGeneralSolver.build" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.solver.KoopmanGeneralSolver.calc_psi_next">
+<span class="sig-name descname"><span class="pre">calc_psi_next</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/solver.html#KoopmanGeneralSolver.calc_psi_next"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.solver.KoopmanGeneralSolver.calc_psi_next" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.solver.KoopmanGeneralSolver.compute_K">
+<span class="sig-name descname"><span class="pre">compute_K</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/solver.html#KoopmanGeneralSolver.compute_K"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.solver.KoopmanGeneralSolver.compute_K" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.solver.KoopmanGeneralSolver.compute_final_info">
+<span class="sig-name descname"><span class="pre">compute_final_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reg_final</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/solver.html#KoopmanGeneralSolver.compute_final_info"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.solver.KoopmanGeneralSolver.compute_final_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.solver.KoopmanGeneralSolver.compute_mode">
+<span class="sig-name descname"><span class="pre">compute_mode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/solver.html#KoopmanGeneralSolver.compute_mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.solver.KoopmanGeneralSolver.compute_mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.solver.KoopmanGeneralSolver.eig_decomp">
+<span class="sig-name descname"><span class="pre">eig_decomp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/solver.html#KoopmanGeneralSolver.eig_decomp"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.solver.KoopmanGeneralSolver.eig_decomp" title="Permalink to this definition">¶</a></dt>
+<dd><p>eigen-decomp of K</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.solver.KoopmanGeneralSolver.eigenfunctions">
+<span class="sig-name descname"><span class="pre">eigenfunctions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/solver.html#KoopmanGeneralSolver.eigenfunctions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.solver.KoopmanGeneralSolver.eigenfunctions" title="Permalink to this definition">¶</a></dt>
+<dd><p>estimated eigenfunctions</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.solver.KoopmanGeneralSolver.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traj_len</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/solver.html#KoopmanGeneralSolver.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.solver.KoopmanGeneralSolver.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>predict the trajectory</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.solver.KoopmanGeneralSolver.separate_data">
+<span class="sig-name descname"><span class="pre">separate_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/solver.html#KoopmanGeneralSolver.separate_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.solver.KoopmanGeneralSolver.separate_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-koopmanlib.target">
+<span id="koopmanlib-target-module"></span><h2>koopmanlib.target module<a class="headerlink" href="#module-koopmanlib.target" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="koopmanlib.target.AbstractODETarget">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">koopmanlib.target.</span></span><span class="sig-name descname"><span class="pre">AbstractODETarget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traj_len</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/target.html#AbstractODETarget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.target.AbstractODETarget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.target.AbstractODETarget.euler">
+<span class="sig-name descname"><span class="pre">euler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/target.html#AbstractODETarget.euler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.target.AbstractODETarget.euler" title="Permalink to this definition">¶</a></dt>
+<dd><p>ODE Solver</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>vector</em><em> (</em><em>float</em><em>)</em>) – variable</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>ODE Solution at t_step after iterating the Euler method n_step times</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>vector with the same shape as the variable x (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.target.AbstractODETarget.generate_init_data">
+<span class="sig-name descname"><span class="pre">generate_init_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/target.html#AbstractODETarget.generate_init_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.target.AbstractODETarget.generate_init_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.target.AbstractODETarget.generate_next_data">
+<span class="sig-name descname"><span class="pre">generate_next_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/target.html#AbstractODETarget.generate_next_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.target.AbstractODETarget.generate_next_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.target.AbstractODETarget.rhs">
+<span class="sig-name descname"><span class="pre">rhs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/target.html#AbstractODETarget.rhs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.target.AbstractODETarget.rhs" title="Permalink to this definition">¶</a></dt>
+<dd><p>RHS Function
+:return: The rhs of one specific ODE</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="koopmanlib.target.DuffingOscillator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">koopmanlib.target.</span></span><span class="sig-name descname"><span class="pre">DuffingOscillator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traj_len</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/target.html#DuffingOscillator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.target.DuffingOscillator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#koopmanlib.target.AbstractODETarget" title="koopmanlib.target.AbstractODETarget"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractODETarget</span></code></a></p>
+<p>Duffing equation based on the notation in</p>
+<p>(<a class="reference external" href="https://en.wikipedia.org/wiki/Duffing_equation">https://en.wikipedia.org/wiki/Duffing_equation</a>)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.target.DuffingOscillator.rhs">
+<span class="sig-name descname"><span class="pre">rhs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/target.html#DuffingOscillator.rhs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.target.DuffingOscillator.rhs" title="Permalink to this definition">¶</a></dt>
+<dd><p>RHS Function
+:return: The rhs of one specific ODE</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="koopmanlib.target.VanderPolOscillator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">koopmanlib.target.</span></span><span class="sig-name descname"><span class="pre">VanderPolOscillator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_init</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traj_len</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/target.html#VanderPolOscillator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.target.VanderPolOscillator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#koopmanlib.target.AbstractODETarget" title="koopmanlib.target.AbstractODETarget"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractODETarget</span></code></a></p>
+<p>Van der Pol Oscillator based on the notation in</p>
+<p>(<a class="reference external" href="https://en.wikipedia.org/wiki/Van_der_Pol_oscillator">https://en.wikipedia.org/wiki/Van_der_Pol_oscillator</a>)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="koopmanlib.target.VanderPolOscillator.rhs">
+<span class="sig-name descname"><span class="pre">rhs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/koopmanlib/target.html#VanderPolOscillator.rhs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#koopmanlib.target.VanderPolOscillator.rhs" title="Permalink to this definition">¶</a></dt>
+<dd><p>RHS Function
+:return: The rhs of one specific ODE</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-koopmanlib">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-koopmanlib" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+<section id="tests-package">
+<h1>tests package<a class="headerlink" href="#tests-package" title="Permalink to this heading">¶</a></h1>
+<section id="id1">
+<h2>Submodules<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-tests.test_dictionaries">
+<span id="tests-test-dictionaries-module"></span><h2>tests.test_dictionaries module<a class="headerlink" href="#module-tests.test_dictionaries" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.test_dictionaries.TestDictionary">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.test_dictionaries.</span></span><span class="sig-name descname"><span class="pre">TestDictionary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_dictionaries.html#TestDictionary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_dictionaries.TestDictionary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<p>Test Suite for <code class="docutils literal notranslate"><span class="pre">dictionary.py</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_dictionaries.TestDictionary.test_base_dictionary">
+<span class="sig-name descname"><span class="pre">test_base_dictionary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_dictionaries.html#TestDictionary.test_base_dictionary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_dictionaries.TestDictionary.test_base_dictionary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test trainable dictionary</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-tests.test_solvers">
+<span id="tests-test-solvers-module"></span><h2>tests.test_solvers module<a class="headerlink" href="#module-tests.test_solvers" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tests.test_solvers.TestSolver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tests.test_solvers.</span></span><span class="sig-name descname"><span class="pre">TestSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_solvers.html#TestSolver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_solvers.TestSolver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></p>
+<p>Test Suite for <code class="docutils literal notranslate"><span class="pre">solver.py</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_solvers.TestSolver.test_dl_solver">
+<span class="sig-name descname"><span class="pre">test_dl_solver</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_solvers.html#TestSolver.test_dl_solver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_solvers.TestSolver.test_dl_solver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test Koopman dictionary learning solver</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tests.test_solvers.TestSolver.test_general_solver">
+<span class="sig-name descname"><span class="pre">test_general_solver</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tests/test_solvers.html#TestSolver.test_general_solver"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tests.test_solvers.TestSolver.test_general_solver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test Koopman general solver</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="id2">
+<h2>Module contents<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h2>
+<span class="target" id="module-tests"></span></section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Koopman Operator Analysis with Deep Learning</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;MLDS-NUS.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
